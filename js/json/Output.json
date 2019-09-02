@@ -1,0 +1,1341 @@
+cgincData = {
+  "files": [
+    {
+      "file": "UnityCG.cginc",
+      "defines": [
+        {
+          "comment": "",
+          "lineNum": 2,
+          "code": "#define UNITY_CG_INCLUDED"
+        },
+        {
+          "comment": "",
+          "lineNum": 4,
+          "code": "#define UNITY_PI            3.14159265359f"
+        },
+        {
+          "comment": "",
+          "lineNum": 5,
+          "code": "#define UNITY_TWO_PI        6.28318530718f"
+        },
+        {
+          "comment": "",
+          "lineNum": 6,
+          "code": "#define UNITY_FOUR_PI       12.56637061436f"
+        },
+        {
+          "comment": "",
+          "lineNum": 7,
+          "code": "#define UNITY_INV_PI        0.31830988618f"
+        },
+        {
+          "comment": "",
+          "lineNum": 8,
+          "code": "#define UNITY_INV_TWO_PI    0.15915494309f"
+        },
+        {
+          "comment": "",
+          "lineNum": 9,
+          "code": "#define UNITY_INV_FOUR_PI   0.07957747155f"
+        },
+        {
+          "comment": "",
+          "lineNum": 10,
+          "code": "#define UNITY_HALF_PI       1.57079632679f"
+        },
+        {
+          "comment": "",
+          "lineNum": 11,
+          "code": "#define UNITY_INV_HALF_PI   0.636619772367f"
+        },
+        {
+          "comment": "// Should SH (light probe / ambient) calculations be performed?\n// - When both static and dynamic lightmaps are available, no SH evaluation is performed\n// - When static and dynamic lightmaps are not available, SH evaluation is always performed\n// - For low level LODs, static lightmap and real-time GI from light probes can be combined together\n// - Passes that don't do ambient (additive, shadowcaster etc.) should not do SH either.",
+          "lineNum": 18,
+          "code": "#define UNITY_SHOULD_SAMPLE_SH (defined(LIGHTPROBE_SH) && !defined(UNITY_PASS_FORWARDADD) && !defined(UNITY_PASS_PREPASSBASE) && !defined(UNITY_PASS_SHADOWCASTER) && !defined(UNITY_PASS_META))"
+        },
+        {
+          "comment": "",
+          "lineNum": 25,
+          "code": "#define unity_ColorSpaceGrey fixed4(0.5, 0.5, 0.5, 0.5)"
+        },
+        {
+          "comment": "",
+          "lineNum": 26,
+          "code": "#define unity_ColorSpaceDouble fixed4(2.0, 2.0, 2.0, 2.0)"
+        },
+        {
+          "comment": "",
+          "lineNum": 27,
+          "code": "#define unity_ColorSpaceDielectricSpec half4(0.220916301, 0.220916301, 0.220916301, 1.0 - 0.220916301)"
+        },
+        {
+          "comment": "",
+          "lineNum": 28,
+          "code": "#define unity_ColorSpaceLuminance half4(0.22, 0.707, 0.071, 0.0) // Legacy: alpha is set to 0.0 to specify gamma mode"
+        },
+        {
+          "comment": "",
+          "lineNum": 30,
+          "code": "#define unity_ColorSpaceGrey fixed4(0.214041144, 0.214041144, 0.214041144, 0.5)"
+        },
+        {
+          "comment": "",
+          "lineNum": 31,
+          "code": "#define unity_ColorSpaceDouble fixed4(4.59479380, 4.59479380, 4.59479380, 2.0)"
+        },
+        {
+          "comment": "",
+          "lineNum": 32,
+          "code": "#define unity_ColorSpaceDielectricSpec half4(0.04, 0.04, 0.04, 1.0 - 0.04) // standard dielectric reflectivity coef at incident angle (= 4%)"
+        },
+        {
+          "comment": "",
+          "lineNum": 33,
+          "code": "#define unity_ColorSpaceLuminance half4(0.0396819152, 0.458021790, 0.00609653955, 1.0) // Legacy: alpha is set to 1.0 to specify linear mode"
+        },
+        {
+          "comment": "",
+          "lineNum": 41,
+          "code": "#define USING_LIGHT_MULTI_COMPILE"
+        },
+        {
+          "comment": "// Real-support for depth-format cube shadow map.",
+          "lineNum": 46,
+          "code": "#define SHADOWS_CUBE_IN_DEPTH_TEX"
+        },
+        {
+          "comment": "",
+          "lineNum": 49,
+          "code": "#define SCALED_NORMAL v.normal"
+        },
+        {
+          "comment": "// These constants must be kept in sync with RGBMRanges.h",
+          "lineNum": 53,
+          "code": "#define LIGHTMAP_RGBM_SCALE 5.0"
+        },
+        {
+          "comment": "// These constants must be kept in sync with RGBMRanges.h",
+          "lineNum": 54,
+          "code": "#define EMISSIVE_RGBM_SCALE 97.0"
+        },
+        {
+          "comment": "// Declares 3x3 matrix 'rotation', filled with tangent space basis",
+          "lineNum": 244,
+          "code": "#define TANGENT_SPACE_ROTATION \\\n    float3 binormal = cross( normalize(v.normal), normalize(v.tangent.xyz) ) * v.tangent.w; \\\n    float3x3 rotation = float3x3( v.tangent.xyz, binormal, v.normal )"
+        },
+        {
+          "comment": "// Transforms 2D UV by scale/bias property",
+          "lineNum": 440,
+          "code": "#define TRANSFORM_TEX(tex,name) (tex.xy * name##_ST.xy + name##_ST.zw)"
+        },
+        {
+          "comment": "// Deprecated. Used to transform 4D UV by a fixed function texture matrix. Now just returns the passed UV.",
+          "lineNum": 443,
+          "code": "#define TRANSFORM_UV(idx) v.texcoord.xy"
+        },
+        {
+          "comment": "",
+          "lineNum": 723,
+          "code": "#define UnityStereoScreenSpaceUVAdjust(x, y) UnityStereoScreenSpaceUVAdjustInternal(x, y)"
+        },
+        {
+          "comment": "",
+          "lineNum": 746,
+          "code": "#define TransformStereoScreenSpaceTex(uv, w) uv"
+        },
+        {
+          "comment": "",
+          "lineNum": 747,
+          "code": "#define UnityStereoTransformScreenSpaceTex(uv) uv"
+        },
+        {
+          "comment": "",
+          "lineNum": 748,
+          "code": "#define UnityStereoClamp(uv, scaleAndOffset) uv"
+        },
+        {
+          "comment": "// Depth render texture helpers",
+          "lineNum": 752,
+          "code": "#define DECODE_EYEDEPTH(i) LinearEyeDepth(i)"
+        },
+        {
+          "comment": "// Depth render texture helpers",
+          "lineNum": 753,
+          "code": "#define COMPUTE_EYEDEPTH(o) o = -UnityObjectToViewPos( v.vertex ).z"
+        },
+        {
+          "comment": "// Depth render texture helpers",
+          "lineNum": 754,
+          "code": "#define COMPUTE_DEPTH_01 -(UnityObjectToViewPos( v.vertex ).z * _ProjectionParams.w)"
+        },
+        {
+          "comment": "// Depth render texture helpers",
+          "lineNum": 755,
+          "code": "#define COMPUTE_VIEW_NORMAL normalize(mul((float3x3)UNITY_MATRIX_IT_MV, v.normal))"
+        },
+        {
+          "comment": "// Projected screen position helpers",
+          "lineNum": 794,
+          "code": "#define V2F_SCREEN_TYPE float4"
+        },
+        {
+          "comment": "    // Rendering into point light (cubemap) shadows",
+          "lineNum": 930,
+          "code": "    #define V2F_SHADOW_CASTER_NOPOS float3 vec : TEXCOORD0;"
+        },
+        {
+          "comment": "    // Rendering into point light (cubemap) shadows",
+          "lineNum": 931,
+          "code": "    #define TRANSFER_SHADOW_CASTER_NOPOS_LEGACY(o,opos) o.vec = mul(unity_ObjectToWorld, v.vertex).xyz - _LightPositionRange.xyz; opos = UnityObjectToClipPos(v.vertex);"
+        },
+        {
+          "comment": "    // Rendering into point light (cubemap) shadows",
+          "lineNum": 932,
+          "code": "    #define TRANSFER_SHADOW_CASTER_NOPOS(o,opos) o.vec = mul(unity_ObjectToWorld, v.vertex).xyz - _LightPositionRange.xyz; opos = UnityObjectToClipPos(v.vertex);"
+        },
+        {
+          "comment": "    // Rendering into point light (cubemap) shadows",
+          "lineNum": 933,
+          "code": "    #define SHADOW_CASTER_FRAGMENT(i) return UnityEncodeCubeShadowDepth ((length(i.vec) + unity_LightShadowBias.x) * _LightPositionRange.w);"
+        },
+        {
+          "comment": "    // Rendering into directional or spot light shadows",
+          "lineNum": 937,
+          "code": "    #define V2F_SHADOW_CASTER_NOPOS"
+        },
+        {
+          "comment": "    // Rendering into directional or spot light shadows\n    // Let embedding code know that V2F_SHADOW_CASTER_NOPOS is empty; so that it can workaround\n    // empty structs that could possibly be produced.",
+          "lineNum": 940,
+          "code": "    #define V2F_SHADOW_CASTER_NOPOS_IS_EMPTY"
+        },
+        {
+          "comment": "    // Rendering into directional or spot light shadows\n    // Let embedding code know that V2F_SHADOW_CASTER_NOPOS is empty; so that it can workaround\n    // empty structs that could possibly be produced.",
+          "lineNum": 941,
+          "code": "    #define TRANSFER_SHADOW_CASTER_NOPOS_LEGACY(o,opos) \\\n        opos = UnityObjectToClipPos(v.vertex.xyz); \\\n        opos = UnityApplyLinearShadowBias(opos);"
+        },
+        {
+          "comment": "    // Rendering into directional or spot light shadows\n    // Let embedding code know that V2F_SHADOW_CASTER_NOPOS is empty; so that it can workaround\n    // empty structs that could possibly be produced.",
+          "lineNum": 944,
+          "code": "    #define TRANSFER_SHADOW_CASTER_NOPOS(o,opos) \\\n        opos = UnityClipSpaceShadowCasterPos(v.vertex, v.normal); \\\n        opos = UnityApplyLinearShadowBias(opos);"
+        },
+        {
+          "comment": "    // Rendering into directional or spot light shadows\n    // Let embedding code know that V2F_SHADOW_CASTER_NOPOS is empty; so that it can workaround\n    // empty structs that could possibly be produced.",
+          "lineNum": 947,
+          "code": "    #define SHADOW_CASTER_FRAGMENT(i) return 0;"
+        },
+        {
+          "comment": "// Declare all data needed for shadow caster pass output (any shadow directions/depths/distances as needed),\n// plus clip space position.",
+          "lineNum": 952,
+          "code": "#define V2F_SHADOW_CASTER V2F_SHADOW_CASTER_NOPOS UNITY_POSITION(pos)"
+        },
+        {
+          "comment": "// Vertex shader part, with support for normal offset shadows. Requires\n// position and normal to be present in the vertex input.",
+          "lineNum": 956,
+          "code": "#define TRANSFER_SHADOW_CASTER_NORMALOFFSET(o) TRANSFER_SHADOW_CASTER_NOPOS(o,o.pos)"
+        },
+        {
+          "comment": "// Vertex shader part, legacy. No support for normal offset shadows - because\n// that would require vertex normals, which might not be present in user-written shaders.",
+          "lineNum": 960,
+          "code": "#define TRANSFER_SHADOW_CASTER(o) TRANSFER_SHADOW_CASTER_NOPOS_LEGACY(o,o.pos)"
+        },
+        {
+          "comment": "",
+          "lineNum": 966,
+          "code": "#define UNITY_OPAQUE_ALPHA(outputAlpha) outputAlpha = 1.0"
+        },
+        {
+          "comment": "        //D3d with reversed Z => z clip range is [near, 0] -> remapping to [0, far]\n        //max is required to protect ourselves from near plane not being correct/meaningfull in case of oblique matrices.",
+          "lineNum": 990,
+          "code": "        #define UNITY_Z_0_FAR_FROM_CLIPSPACE(coord) max(((1.0-(coord)/_ProjectionParams.y)*_ProjectionParams.z),0)"
+        },
+        {
+          "comment": "        //D3d with reversed Z => z clip range is [near, 0] -> remapping to [0, far]\n        //max is required to protect ourselves from near plane not being correct/meaningfull in case of oblique matrices.\n        //GL with reversed z => z clip range is [near, -far] -> should remap in theory but dont do it in practice to save some perf (range is close enough)",
+          "lineNum": 993,
+          "code": "        #define UNITY_Z_0_FAR_FROM_CLIPSPACE(coord) max(-(coord), 0)"
+        },
+        {
+          "comment": "        //D3d with reversed Z => z clip range is [near, 0] -> remapping to [0, far]\n        //max is required to protect ourselves from near plane not being correct/meaningfull in case of oblique matrices.\n        //GL with reversed z => z clip range is [near, -far] -> should remap in theory but dont do it in practice to save some perf (range is close enough)\n    //D3d without reversed z => z clip range is [0, far] -> nothing to do",
+          "lineNum": 997,
+          "code": "    #define UNITY_Z_0_FAR_FROM_CLIPSPACE(coord) (coord)"
+        },
+        {
+          "comment": "        //D3d with reversed Z => z clip range is [near, 0] -> remapping to [0, far]\n        //max is required to protect ourselves from near plane not being correct/meaningfull in case of oblique matrices.\n        //GL with reversed z => z clip range is [near, -far] -> should remap in theory but dont do it in practice to save some perf (range is close enough)\n    //D3d without reversed z => z clip range is [0, far] -> nothing to do\n    //Opengl => z clip range is [-near, far] -> should remap in theory but dont do it in practice to save some perf (range is close enough)",
+          "lineNum": 1000,
+          "code": "    #define UNITY_Z_0_FAR_FROM_CLIPSPACE(coord) (coord)"
+        },
+        {
+          "comment": "    // factor = (end-z)/(end-start) = z * (-1/(end-start)) + (end/(end-start))",
+          "lineNum": 1005,
+          "code": "    #define UNITY_CALC_FOG_FACTOR_RAW(coord) float unityFogFactor = (coord) * unity_FogParams.z + unity_FogParams.w"
+        },
+        {
+          "comment": "    // factor = (end-z)/(end-start) = z * (-1/(end-start)) + (end/(end-start))\n    // factor = exp(-density*z)",
+          "lineNum": 1008,
+          "code": "    #define UNITY_CALC_FOG_FACTOR_RAW(coord) float unityFogFactor = unity_FogParams.y * (coord); unityFogFactor = exp2(-unityFogFactor)"
+        },
+        {
+          "comment": "    // factor = (end-z)/(end-start) = z * (-1/(end-start)) + (end/(end-start))\n    // factor = exp(-density*z)\n    // factor = exp(-(density*z)^2)",
+          "lineNum": 1011,
+          "code": "    #define UNITY_CALC_FOG_FACTOR_RAW(coord) float unityFogFactor = unity_FogParams.x * (coord); unityFogFactor = exp2(-unityFogFactor*unityFogFactor)"
+        },
+        {
+          "comment": "    // factor = (end-z)/(end-start) = z * (-1/(end-start)) + (end/(end-start))\n    // factor = exp(-density*z)\n    // factor = exp(-(density*z)^2)",
+          "lineNum": 1013,
+          "code": "    #define UNITY_CALC_FOG_FACTOR_RAW(coord) float unityFogFactor = 0.0"
+        },
+        {
+          "comment": "",
+          "lineNum": 1016,
+          "code": "#define UNITY_CALC_FOG_FACTOR(coord) UNITY_CALC_FOG_FACTOR_RAW(UNITY_Z_0_FAR_FROM_CLIPSPACE(coord))"
+        },
+        {
+          "comment": "",
+          "lineNum": 1018,
+          "code": "#define UNITY_FOG_COORDS_PACKED(idx, vectype) vectype fogCoord : TEXCOORD##idx;"
+        },
+        {
+          "comment": "",
+          "lineNum": 1021,
+          "code": "    #define UNITY_FOG_COORDS(idx) UNITY_FOG_COORDS_PACKED(idx, float1)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex",
+          "lineNum": 1025,
+          "code": "        #define UNITY_TRANSFER_FOG(o,outpos) UNITY_CALC_FOG_FACTOR((outpos).z); o.fogCoord.x = unityFogFactor"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex",
+          "lineNum": 1026,
+          "code": "        #define UNITY_TRANSFER_FOG_COMBINED_WITH_TSPACE(o,outpos) UNITY_CALC_FOG_FACTOR((outpos).z); o.tSpace1.y = tangentSign; o.tSpace2.y = unityFogFactor"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex",
+          "lineNum": 1027,
+          "code": "        #define UNITY_TRANSFER_FOG_COMBINED_WITH_WORLD_POS(o,outpos) UNITY_CALC_FOG_FACTOR((outpos).z); o.worldPos.w = unityFogFactor"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex",
+          "lineNum": 1028,
+          "code": "        #define UNITY_TRANSFER_FOG_COMBINED_WITH_EYE_VEC(o,outpos) UNITY_CALC_FOG_FACTOR((outpos).z); o.eyeVec.w = unityFogFactor"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1031,
+          "code": "        #define UNITY_TRANSFER_FOG(o,outpos) o.fogCoord.x = (outpos).z"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1032,
+          "code": "        #define UNITY_TRANSFER_FOG_COMBINED_WITH_TSPACE(o,outpos) o.tSpace2.y = (outpos).z"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1033,
+          "code": "        #define UNITY_TRANSFER_FOG_COMBINED_WITH_WORLD_POS(o,outpos) o.worldPos.w = (outpos).z"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1034,
+          "code": "        #define UNITY_TRANSFER_FOG_COMBINED_WITH_EYE_VEC(o,outpos) o.eyeVec.w = (outpos).z"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1037,
+          "code": "    #define UNITY_FOG_COORDS(idx)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1038,
+          "code": "    #define UNITY_TRANSFER_FOG(o,outpos)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1039,
+          "code": "    #define UNITY_TRANSFER_FOG_COMBINED_WITH_TSPACE(o,outpos)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1040,
+          "code": "    #define UNITY_TRANSFER_FOG_COMBINED_WITH_WORLD_POS(o,outpos)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: calculate fog factor per-vertex\n        // SM3.0 and PC/console: calculate fog distance per-vertex, and fog factor per-pixel",
+          "lineNum": 1041,
+          "code": "    #define UNITY_TRANSFER_FOG_COMBINED_WITH_EYE_VEC(o,outpos)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1044,
+          "code": "#define UNITY_FOG_LERP_COLOR(col,fogCol,fogFac) col.rgb = lerp((fogCol).rgb, (col).rgb, saturate(fogFac))"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color",
+          "lineNum": 1050,
+          "code": "        #define UNITY_APPLY_FOG_COLOR(coord,col,fogCol) UNITY_FOG_LERP_COLOR(col,fogCol,(coord).x)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1053,
+          "code": "        #define UNITY_APPLY_FOG_COLOR(coord,col,fogCol) UNITY_CALC_FOG_FACTOR((coord).x); UNITY_FOG_LERP_COLOR(col,fogCol,unityFogFactor)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1055,
+          "code": "    #define UNITY_EXTRACT_FOG(name) float _unity_fogCoord = name.fogCoord"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1056,
+          "code": "    #define UNITY_EXTRACT_FOG_FROM_TSPACE(name) float _unity_fogCoord = name.tSpace2.y"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1057,
+          "code": "    #define UNITY_EXTRACT_FOG_FROM_WORLD_POS(name) float _unity_fogCoord = name.worldPos.w"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1058,
+          "code": "    #define UNITY_EXTRACT_FOG_FROM_EYE_VEC(name) float _unity_fogCoord = name.eyeVec.w"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1060,
+          "code": "    #define UNITY_APPLY_FOG_COLOR(coord,col,fogCol)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1061,
+          "code": "    #define UNITY_EXTRACT_FOG(name)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1062,
+          "code": "    #define UNITY_EXTRACT_FOG_FROM_TSPACE(name)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1063,
+          "code": "    #define UNITY_EXTRACT_FOG_FROM_WORLD_POS(name)"
+        },
+        {
+          "comment": "        // mobile or SM2.0: fog factor was already calculated per-vertex, so just lerp the color\n        // SM3.0 and PC/console: calculate fog factor and lerp fog color",
+          "lineNum": 1064,
+          "code": "    #define UNITY_EXTRACT_FOG_FROM_EYE_VEC(name)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1068,
+          "code": "    #define UNITY_APPLY_FOG(coord,col) UNITY_APPLY_FOG_COLOR(coord,col,fixed4(0,0,0,0))"
+        },
+        {
+          "comment": "",
+          "lineNum": 1070,
+          "code": "    #define UNITY_APPLY_FOG(coord,col) UNITY_APPLY_FOG_COLOR(coord,col,unity_FogColor)"
+        },
+        {
+          "comment": "// ------------------------------------------------------------------\n//  TBN helpers",
+          "lineNum": 1075,
+          "code": "#define UNITY_EXTRACT_TBN_0(name) fixed3 _unity_tbn_0 = name.tSpace0.xyz"
+        },
+        {
+          "comment": "// ------------------------------------------------------------------\n//  TBN helpers",
+          "lineNum": 1076,
+          "code": "#define UNITY_EXTRACT_TBN_1(name) fixed3 _unity_tbn_1 = name.tSpace1.xyz"
+        },
+        {
+          "comment": "// ------------------------------------------------------------------\n//  TBN helpers",
+          "lineNum": 1077,
+          "code": "#define UNITY_EXTRACT_TBN_2(name) fixed3 _unity_tbn_2 = name.tSpace2.xyz"
+        },
+        {
+          "comment": "",
+          "lineNum": 1079,
+          "code": "#define UNITY_EXTRACT_TBN(name) UNITY_EXTRACT_TBN_0(name); UNITY_EXTRACT_TBN_1(name); UNITY_EXTRACT_TBN_2(name)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1081,
+          "code": "#define UNITY_EXTRACT_TBN_T(name) fixed3 _unity_tangent = fixed3(name.tSpace0.x, name.tSpace1.x, name.tSpace2.x)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1082,
+          "code": "#define UNITY_EXTRACT_TBN_N(name) fixed3 _unity_normal = fixed3(name.tSpace0.z, name.tSpace1.z, name.tSpace2.z)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1083,
+          "code": "#define UNITY_EXTRACT_TBN_B(name) fixed3 _unity_binormal = cross(_unity_normal, _unity_tangent)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1084,
+          "code": "#define UNITY_CORRECT_TBN_B_SIGN(name) _unity_binormal *= name.tSpace1.y;"
+        },
+        {
+          "comment": "",
+          "lineNum": 1085,
+          "code": "#define UNITY_RECONSTRUCT_TBN_0 fixed3 _unity_tbn_0 = fixed3(_unity_tangent.x, _unity_binormal.x, _unity_normal.x)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1086,
+          "code": "#define UNITY_RECONSTRUCT_TBN_1 fixed3 _unity_tbn_1 = fixed3(_unity_tangent.y, _unity_binormal.y, _unity_normal.y)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1087,
+          "code": "#define UNITY_RECONSTRUCT_TBN_2 fixed3 _unity_tbn_2 = fixed3(_unity_tangent.z, _unity_binormal.z, _unity_normal.z)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1090,
+          "code": "    #define UNITY_RECONSTRUCT_TBN(name) UNITY_EXTRACT_TBN_T(name); UNITY_EXTRACT_TBN_N(name); UNITY_EXTRACT_TBN_B(name); UNITY_CORRECT_TBN_B_SIGN(name); UNITY_RECONSTRUCT_TBN_0; UNITY_RECONSTRUCT_TBN_1; UNITY_RECONSTRUCT_TBN_2"
+        },
+        {
+          "comment": "",
+          "lineNum": 1092,
+          "code": "    #define UNITY_RECONSTRUCT_TBN(name) UNITY_EXTRACT_TBN(name)"
+        },
+        {
+          "comment": "//  LOD cross fade helpers\n// keep all the old macros",
+          "lineNum": 1097,
+          "code": "#define UNITY_DITHER_CROSSFADE_COORDS"
+        },
+        {
+          "comment": "//  LOD cross fade helpers\n// keep all the old macros",
+          "lineNum": 1098,
+          "code": "#define UNITY_DITHER_CROSSFADE_COORDS_IDX(idx)"
+        },
+        {
+          "comment": "//  LOD cross fade helpers\n// keep all the old macros",
+          "lineNum": 1099,
+          "code": "#define UNITY_TRANSFER_DITHER_CROSSFADE(o,v)"
+        },
+        {
+          "comment": "//  LOD cross fade helpers\n// keep all the old macros",
+          "lineNum": 1100,
+          "code": "#define UNITY_TRANSFER_DITHER_CROSSFADE_HPOS(o,hpos)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1103,
+          "code": "    #define UNITY_APPLY_DITHER_CROSSFADE(vpos)  UnityApplyDitherCrossFade(vpos)"
+        },
+        {
+          "comment": "",
+          "lineNum": 1113,
+          "code": "    #define UNITY_APPLY_DITHER_CROSSFADE(vpos)"
+        },
+        {
+          "comment": "// Note: V2F_SHADOW_COLLECTOR and TRANSFER_SHADOW_COLLECTOR are deprecated",
+          "lineNum": 1130,
+          "code": "#define V2F_SHADOW_COLLECTOR float4 pos : SV_POSITION; float3 _ShadowCoord0 : TEXCOORD0; float3 _ShadowCoord1 : TEXCOORD1; float3 _ShadowCoord2 : TEXCOORD2; float3 _ShadowCoord3 : TEXCOORD3; float4 _WorldPosViewZ : TEXCOORD4"
+        },
+        {
+          "comment": "// Note: V2F_SHADOW_COLLECTOR and TRANSFER_SHADOW_COLLECTOR are deprecated",
+          "lineNum": 1131,
+          "code": "#define TRANSFER_SHADOW_COLLECTOR(o)    \\\n    o.pos = UnityObjectToClipPos(v.vertex); \\\n    float4 wpos = mul(unity_ObjectToWorld, v.vertex); \\\n    o._WorldPosViewZ.xyz = wpos; \\\n    o._WorldPosViewZ.w = -UnityObjectToViewPos(v.vertex).z; \\\n    o._ShadowCoord0 = mul(unity_WorldToShadow[0], wpos).xyz; \\\n    o._ShadowCoord1 = mul(unity_WorldToShadow[1], wpos).xyz; \\\n    o._ShadowCoord2 = mul(unity_WorldToShadow[2], wpos).xyz; \\\n    o._ShadowCoord3 = mul(unity_WorldToShadow[3], wpos).xyz;"
+        },
+        {
+          "comment": "// Note: SAMPLE_SHADOW_COLLECTOR_SHADOW is deprecated",
+          "lineNum": 1142,
+          "code": "#define SAMPLE_SHADOW_COLLECTOR_SHADOW(coord) \\\n    half shadow = UNITY_SAMPLE_SHADOW(_ShadowMapTexture,coord); \\\n    shadow = _LightShadowData.r + shadow * (1-_LightShadowData.r);"
+        },
+        {
+          "comment": "// Note: COMPUTE_SHADOW_COLLECTOR_SHADOW is deprecated",
+          "lineNum": 1147,
+          "code": "#define COMPUTE_SHADOW_COLLECTOR_SHADOW(i, weights, shadowFade) \\\n    float4 coord = float4(i._ShadowCoord0 * weights[0] + i._ShadowCoord1 * weights[1] + i._ShadowCoord2 * weights[2] + i._ShadowCoord3 * weights[3], 1); \\\n    SAMPLE_SHADOW_COLLECTOR_SHADOW(coord) \\\n    float4 res; \\\n    res.x = saturate(shadow + shadowFade); \\\n    res.y = 1.0; \\\n    res.zw = EncodeFloatRG (1 - i._WorldPosViewZ.w * _ProjectionParams.w); \\\n    return res;"
+        },
+        {
+          "comment": "// Note: deprecated",
+          "lineNum": 1158,
+          "code": "#define SHADOW_COLLECTOR_FRAGMENT(i) \\\n    float3 fromCenter0 = i._WorldPosViewZ.xyz - unity_ShadowSplitSpheres[0].xyz; \\\n    float3 fromCenter1 = i._WorldPosViewZ.xyz - unity_ShadowSplitSpheres[1].xyz; \\\n    float3 fromCenter2 = i._WorldPosViewZ.xyz - unity_ShadowSplitSpheres[2].xyz; \\\n    float3 fromCenter3 = i._WorldPosViewZ.xyz - unity_ShadowSplitSpheres[3].xyz; \\\n    float4 distances2 = float4(dot(fromCenter0,fromCenter0), dot(fromCenter1,fromCenter1), dot(fromCenter2,fromCenter2), dot(fromCenter3,fromCenter3)); \\\n    float4 cascadeWeights = float4(distances2 < unity_ShadowSplitSqRadii); \\\n    cascadeWeights.yzw = saturate(cascadeWeights.yzw - cascadeWeights.xyz); \\\n    float sphereDist = distance(i._WorldPosViewZ.xyz, unity_ShadowFadeCenterAndType.xyz); \\\n    float shadowFade = saturate(sphereDist * _LightShadowData.z + _LightShadowData.w); \\\n    COMPUTE_SHADOW_COLLECTOR_SHADOW(i, cascadeWeights, shadowFade)"
+        },
+        {
+          "comment": "// Note: deprecated",
+          "lineNum": 1170,
+          "code": "#define SHADOW_COLLECTOR_FRAGMENT(i) \\\n    float4 viewZ = i._WorldPosViewZ.w; \\\n    float4 zNear = float4( viewZ >= _LightSplitsNear ); \\\n    float4 zFar = float4( viewZ < _LightSplitsFar ); \\\n    float4 cascadeWeights = zNear * zFar; \\\n    float shadowFade = saturate(i._WorldPosViewZ.w * _LightShadowData.z + _LightShadowData.w); \\\n    COMPUTE_SHADOW_COLLECTOR_SHADOW(i, cascadeWeights, shadowFade)"
+        },
+        {
+          "comment": "// Legacy; used to do something on platforms that had to emulate depth textures manually. Now all platforms have native depth textures.",
+          "lineNum": 1183,
+          "code": "#define UNITY_TRANSFER_DEPTH(oo)"
+        },
+        {
+          "comment": "// Legacy; used to do something on platforms that had to emulate depth textures manually. Now all platforms have native depth textures.\n// Legacy; used to do something on platforms that had to emulate depth textures manually. Now all platforms have native depth textures.",
+          "lineNum": 1185,
+          "code": "#define UNITY_OUTPUT_DEPTH(i) return 0"
+        },
+        {
+          "comment": "",
+          "lineNum": 1189,
+          "code": "#define API_HAS_GUARANTEED_R16_SUPPORT !(SHADER_API_VULKAN || SHADER_API_GLES || SHADER_API_GLES3)"
+        }
+      ],
+      "functions": [
+        {
+          "comment": "// Legacy for compatibility with existing shaders",
+          "lineNum": 84,
+          "modifiers": "inline",
+          "parameters": "",
+          "type": "bool",
+          "name": "IsGammaSpace",
+          "code": "inline bool IsGammaSpace()\n{\n    #ifdef UNITY_COLORSPACE_GAMMA\n        return true;\n    #else\n        return false;\n    #endif\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 93,
+          "modifiers": "inline",
+          "parameters": "float value",
+          "type": "float",
+          "name": "GammaToLinearSpaceExact",
+          "code": "inline float GammaToLinearSpaceExact (float value)\n{\n    if (value <= 0.04045F)\n        return value / 12.92F;\n    else if (value < 1.0F)\n        return pow((value + 0.055F)/1.055F, 2.4F);\n    else\n        return pow(value, 2.2F);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 103,
+          "modifiers": "inline",
+          "parameters": "half3 sRGB",
+          "type": "half3",
+          "name": "GammaToLinearSpace",
+          "code": "inline half3 GammaToLinearSpace (half3 sRGB)\n{\n    // Approximate version from http://chilliant.blogspot.com.au/2012/08/srgb-approximations-for-hlsl.html?m=1\n    return sRGB * (sRGB * (sRGB * 0.305306011h + 0.682171111h) + 0.012522878h);\n\n    // Precise version, useful for debugging.\n    //return half3(GammaToLinearSpaceExact(sRGB.r), GammaToLinearSpaceExact(sRGB.g), GammaToLinearSpaceExact(sRGB.b));\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 112,
+          "modifiers": "inline",
+          "parameters": "float value",
+          "type": "float",
+          "name": "LinearToGammaSpaceExact",
+          "code": "inline float LinearToGammaSpaceExact (float value)\n{\n    if (value <= 0.0F)\n        return 0.0F;\n    else if (value <= 0.0031308F)\n        return 12.92F * value;\n    else if (value < 1.0F)\n        return 1.055F * pow(value, 0.4166667F) - 0.055F;\n    else\n        return pow(value, 0.45454545F);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 124,
+          "modifiers": "inline",
+          "parameters": "half3 linRGB",
+          "type": "half3",
+          "name": "LinearToGammaSpace",
+          "code": "inline half3 LinearToGammaSpace (half3 linRGB)\n{\n    linRGB = max(linRGB, half3(0.h, 0.h, 0.h));\n    // An almost-perfect approximation from http://chilliant.blogspot.com.au/2012/08/srgb-approximations-for-hlsl.html?m=1\n    return max(1.055h * pow(linRGB, 0.416666667h) - 0.055h, 0.h);\n\n    // Exact version, useful for debugging.\n    //return half3(LinearToGammaSpaceExact(linRGB.r), LinearToGammaSpaceExact(linRGB.g), LinearToGammaSpaceExact(linRGB.b));\n}"
+        },
+        {
+          "comment": "// Tranforms position from world to homogenous space",
+          "lineNum": 135,
+          "modifiers": "inline",
+          "parameters": "in float3 pos",
+          "type": "float4",
+          "name": "UnityWorldToClipPos",
+          "code": "inline float4 UnityWorldToClipPos( in float3 pos )\n{\n    return mul(UNITY_MATRIX_VP, float4(pos, 1.0));\n}"
+        },
+        {
+          "comment": "// Tranforms position from view to homogenous space",
+          "lineNum": 141,
+          "modifiers": "inline",
+          "parameters": "in float3 pos",
+          "type": "float4",
+          "name": "UnityViewToClipPos",
+          "code": "inline float4 UnityViewToClipPos( in float3 pos )\n{\n    return mul(UNITY_MATRIX_P, float4(pos, 1.0));\n}"
+        },
+        {
+          "comment": "// Tranforms position from object to camera space",
+          "lineNum": 147,
+          "modifiers": "inline",
+          "parameters": "in float3 pos",
+          "type": "float3",
+          "name": "UnityObjectToViewPos",
+          "code": "inline float3 UnityObjectToViewPos( in float3 pos )\n{\n    return mul(UNITY_MATRIX_V, mul(unity_ObjectToWorld, float4(pos, 1.0))).xyz;\n}"
+        },
+        {
+          "comment": "// Tranforms position from object to camera space",
+          "lineNum": 151,
+          "modifiers": "inline",
+          "parameters": "float4 pos",
+          "type": "float3",
+          "name": "UnityObjectToViewPos",
+          "code": "inline float3 UnityObjectToViewPos(float4 pos) // overload for float4; avoids \"implicit truncation\" warning for existing shaders\n{\n    return UnityObjectToViewPos(pos.xyz);\n}"
+        },
+        {
+          "comment": "// Tranforms position from world to camera space",
+          "lineNum": 157,
+          "modifiers": "inline",
+          "parameters": "in float3 pos",
+          "type": "float3",
+          "name": "UnityWorldToViewPos",
+          "code": "inline float3 UnityWorldToViewPos( in float3 pos )\n{\n    return mul(UNITY_MATRIX_V, float4(pos, 1.0)).xyz;\n}"
+        },
+        {
+          "comment": "// Transforms direction from object to world space",
+          "lineNum": 163,
+          "modifiers": "inline",
+          "parameters": "in float3 dir",
+          "type": "float3",
+          "name": "UnityObjectToWorldDir",
+          "code": "inline float3 UnityObjectToWorldDir( in float3 dir )\n{\n    return normalize(mul((float3x3)unity_ObjectToWorld, dir));\n}"
+        },
+        {
+          "comment": "// Transforms direction from world to object space",
+          "lineNum": 169,
+          "modifiers": "inline",
+          "parameters": "in float3 dir",
+          "type": "float3",
+          "name": "UnityWorldToObjectDir",
+          "code": "inline float3 UnityWorldToObjectDir( in float3 dir )\n{\n    return normalize(mul((float3x3)unity_WorldToObject, dir));\n}"
+        },
+        {
+          "comment": "// Transforms normal from object to world space",
+          "lineNum": 175,
+          "modifiers": "inline",
+          "parameters": "in float3 norm",
+          "type": "float3",
+          "name": "UnityObjectToWorldNormal",
+          "code": "inline float3 UnityObjectToWorldNormal( in float3 norm )\n{\n#ifdef UNITY_ASSUME_UNIFORM_SCALING\n    return UnityObjectToWorldDir(norm);\n#else\n    // mul(IT_M, norm) => mul(norm, I_M) => {dot(norm, I_M.col0), dot(norm, I_M.col1), dot(norm, I_M.col2)}\n    return normalize(mul(norm, (float3x3)unity_WorldToObject));\n#endif\n}"
+        },
+        {
+          "comment": "// Computes world space light direction, from world space position",
+          "lineNum": 186,
+          "modifiers": "inline",
+          "parameters": "in float3 worldPos",
+          "type": "float3",
+          "name": "UnityWorldSpaceLightDir",
+          "code": "inline float3 UnityWorldSpaceLightDir( in float3 worldPos )\n{\n    #ifndef USING_LIGHT_MULTI_COMPILE\n        return _WorldSpaceLightPos0.xyz - worldPos * _WorldSpaceLightPos0.w;\n    #else\n        #ifndef USING_DIRECTIONAL_LIGHT\n        return _WorldSpaceLightPos0.xyz - worldPos;\n        #else\n        return _WorldSpaceLightPos0.xyz;\n        #endif\n    #endif\n}"
+        },
+        {
+          "comment": "// Computes world space light direction, from object space position\n// *Legacy* Please use UnityWorldSpaceLightDir instead",
+          "lineNum": 201,
+          "modifiers": "inline",
+          "parameters": "in float4 localPos",
+          "type": "float3",
+          "name": "WorldSpaceLightDir",
+          "code": "inline float3 WorldSpaceLightDir( in float4 localPos )\n{\n    float3 worldPos = mul(unity_ObjectToWorld, localPos).xyz;\n    return UnityWorldSpaceLightDir(worldPos);\n}"
+        },
+        {
+          "comment": "// Computes object space light direction",
+          "lineNum": 208,
+          "modifiers": "inline",
+          "parameters": "in float4 v",
+          "type": "float3",
+          "name": "ObjSpaceLightDir",
+          "code": "inline float3 ObjSpaceLightDir( in float4 v )\n{\n    float3 objSpaceLightPos = mul(unity_WorldToObject, _WorldSpaceLightPos0).xyz;\n    #ifndef USING_LIGHT_MULTI_COMPILE\n        return objSpaceLightPos.xyz - v.xyz * _WorldSpaceLightPos0.w;\n    #else\n        #ifndef USING_DIRECTIONAL_LIGHT\n        return objSpaceLightPos.xyz - v.xyz;\n        #else\n        return objSpaceLightPos.xyz;\n        #endif\n    #endif\n}"
+        },
+        {
+          "comment": "// Computes world space view direction, from object space position",
+          "lineNum": 223,
+          "modifiers": "inline",
+          "parameters": "in float3 worldPos",
+          "type": "float3",
+          "name": "UnityWorldSpaceViewDir",
+          "code": "inline float3 UnityWorldSpaceViewDir( in float3 worldPos )\n{\n    return _WorldSpaceCameraPos.xyz - worldPos;\n}"
+        },
+        {
+          "comment": "// Computes world space view direction, from object space position\n// *Legacy* Please use UnityWorldSpaceViewDir instead",
+          "lineNum": 230,
+          "modifiers": "inline",
+          "parameters": "in float4 localPos",
+          "type": "float3",
+          "name": "WorldSpaceViewDir",
+          "code": "inline float3 WorldSpaceViewDir( in float4 localPos )\n{\n    float3 worldPos = mul(unity_ObjectToWorld, localPos).xyz;\n    return UnityWorldSpaceViewDir(worldPos);\n}"
+        },
+        {
+          "comment": "// Computes object space view direction",
+          "lineNum": 237,
+          "modifiers": "inline",
+          "parameters": "in float4 v",
+          "type": "float3",
+          "name": "ObjSpaceViewDir",
+          "code": "inline float3 ObjSpaceViewDir( in float4 v )\n{\n    float3 objSpaceCameraPos = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos.xyz, 1)).xyz;\n    return objSpaceCameraPos - v.xyz;\n}"
+        },
+        {
+          "comment": "// Used in ForwardBase pass: Calculates diffuse lighting from 4 point lights, with data packed in a special way.",
+          "lineNum": 251,
+          "modifiers": "",
+          "parameters": "float4 lightPosX, float4 lightPosY, float4 lightPosZ,    float3 lightColor0, float3 lightColor1, float3 lightColor2, float3 lightColor3,    float4 lightAttenSq,    float3 pos, float3 normal",
+          "type": "float3",
+          "name": "Shade4PointLights",
+          "code": "float3 Shade4PointLights (\n    float4 lightPosX, float4 lightPosY, float4 lightPosZ,\n    float3 lightColor0, float3 lightColor1, float3 lightColor2, float3 lightColor3,\n    float4 lightAttenSq,\n    float3 pos, float3 normal)\n{\n    // to light vectors\n    float4 toLightX = lightPosX - pos.x;\n    float4 toLightY = lightPosY - pos.y;\n    float4 toLightZ = lightPosZ - pos.z;\n    // squared lengths\n    float4 lengthSq = 0;\n    lengthSq += toLightX * toLightX;\n    lengthSq += toLightY * toLightY;\n    lengthSq += toLightZ * toLightZ;\n    // don't produce NaNs if some vertex position overlaps with the light\n    lengthSq = max(lengthSq, 0.000001);\n\n    // NdotL\n    float4 ndotl = 0;\n    ndotl += toLightX * normal.x;\n    ndotl += toLightY * normal.y;\n    ndotl += toLightZ * normal.z;\n    // correct NdotL\n    float4 corr = rsqrt(lengthSq);\n    ndotl = max (float4(0,0,0,0), ndotl * corr);\n    // attenuation\n    float4 atten = 1.0 / (1.0 + lengthSq * lightAttenSq);\n    float4 diff = ndotl * atten;\n    // final color\n    float3 col = 0;\n    col += lightColor0 * diff.x;\n    col += lightColor1 * diff.y;\n    col += lightColor2 * diff.z;\n    col += lightColor3 * diff.w;\n    return col;\n}"
+        },
+        {
+          "comment": "// Used in Vertex pass: Calculates diffuse lighting from lightCount lights. Specifying true to spotLight is more expensive\n// to calculate but lights are treated as spot lights otherwise they are treated as point lights.",
+          "lineNum": 291,
+          "modifiers": "",
+          "parameters": "float4 vertex, float3 normal, int lightCount, bool spotLight",
+          "type": "float3",
+          "name": "ShadeVertexLightsFull",
+          "code": "float3 ShadeVertexLightsFull (float4 vertex, float3 normal, int lightCount, bool spotLight)\n{\n    float3 viewpos = UnityObjectToViewPos (vertex.xyz);\n    float3 viewN = normalize (mul ((float3x3)UNITY_MATRIX_IT_MV, normal));\n\n    float3 lightColor = UNITY_LIGHTMODEL_AMBIENT.xyz;\n    for (int i = 0; i < lightCount; i++) {\n        float3 toLight = unity_LightPosition[i].xyz - viewpos.xyz * unity_LightPosition[i].w;\n        float lengthSq = dot(toLight, toLight);\n\n        // don't produce NaNs if some vertex position overlaps with the light\n        lengthSq = max(lengthSq, 0.000001);\n\n        toLight *= rsqrt(lengthSq);\n\n        float atten = 1.0 / (1.0 + lengthSq * unity_LightAtten[i].z);\n        if (spotLight)\n        {\n            float rho = max (0, dot(toLight, unity_SpotDirection[i].xyz));\n            float spotAtt = (rho - unity_LightAtten[i].x) * unity_LightAtten[i].y;\n            atten *= saturate(spotAtt);\n        }\n\n        float diff = max (0, dot (viewN, toLight));\n        lightColor += unity_LightColor[i].rgb * (diff * atten);\n    }\n    return lightColor;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 320,
+          "modifiers": "",
+          "parameters": "float4 vertex, float3 normal",
+          "type": "float3",
+          "name": "ShadeVertexLights",
+          "code": "float3 ShadeVertexLights (float4 vertex, float3 normal)\n{\n    return ShadeVertexLightsFull (vertex, normal, 4, false);\n}"
+        },
+        {
+          "comment": "// normal should be normalized, w=1.0",
+          "lineNum": 326,
+          "modifiers": "",
+          "parameters": "half4 normal",
+          "type": "half3",
+          "name": "SHEvalLinearL0L1",
+          "code": "half3 SHEvalLinearL0L1 (half4 normal)\n{\n    half3 x;\n\n    // Linear (L1) + constant (L0) polynomial terms\n    x.r = dot(unity_SHAr,normal);\n    x.g = dot(unity_SHAg,normal);\n    x.b = dot(unity_SHAb,normal);\n\n    return x;\n}"
+        },
+        {
+          "comment": "// normal should be normalized, w=1.0",
+          "lineNum": 339,
+          "modifiers": "",
+          "parameters": "half4 normal",
+          "type": "half3",
+          "name": "SHEvalLinearL2",
+          "code": "half3 SHEvalLinearL2 (half4 normal)\n{\n    half3 x1, x2;\n    // 4 of the quadratic (L2) polynomials\n    half4 vB = normal.xyzz * normal.yzzx;\n    x1.r = dot(unity_SHBr,vB);\n    x1.g = dot(unity_SHBg,vB);\n    x1.b = dot(unity_SHBb,vB);\n\n    // Final (5th) quadratic (L2) polynomial\n    half vC = normal.x*normal.x - normal.y*normal.y;\n    x2 = unity_SHC.rgb * vC;\n\n    return x1 + x2;\n}"
+        },
+        {
+          "comment": "// normal should be normalized, w=1.0\n// output in active color space",
+          "lineNum": 357,
+          "modifiers": "",
+          "parameters": "half4 normal",
+          "type": "half3",
+          "name": "ShadeSH9",
+          "code": "half3 ShadeSH9 (half4 normal)\n{\n    // Linear + constant polynomial terms\n    half3 res = SHEvalLinearL0L1 (normal);\n\n    // Quadratic polynomials\n    res += SHEvalLinearL2 (normal);\n\n#   ifdef UNITY_COLORSPACE_GAMMA\n        res = LinearToGammaSpace (res);\n#   endif\n\n    return res;\n}"
+        },
+        {
+          "comment": "// OBSOLETE: for backwards compatibility with 5.0",
+          "lineNum": 373,
+          "modifiers": "",
+          "parameters": "half4 normal",
+          "type": "half3",
+          "name": "ShadeSH3Order",
+          "code": "half3 ShadeSH3Order(half4 normal)\n{\n    // Quadratic polynomials\n    half3 res = SHEvalLinearL2 (normal);\n\n#   ifdef UNITY_COLORSPACE_GAMMA\n        res = LinearToGammaSpace (res);\n#   endif\n\n    return res;\n}"
+        },
+        {
+          "comment": "// normal should be normalized, w=1.0",
+          "lineNum": 388,
+          "modifiers": "",
+          "parameters": "half4 normal, float3 worldPos",
+          "type": "half3",
+          "name": "SHEvalLinearL0L1_SampleProbeVolume",
+          "code": "half3 SHEvalLinearL0L1_SampleProbeVolume (half4 normal, float3 worldPos)\n{\n    const float transformToLocal = unity_ProbeVolumeParams.y;\n    const float texelSizeX = unity_ProbeVolumeParams.z;\n\n    //The SH coefficients textures and probe occlusion are packed into 1 atlas.\n    //-------------------------\n    //| ShR | ShG | ShB | Occ |\n    //-------------------------\n\n    float3 position = (transformToLocal == 1.0f) ? mul(unity_ProbeVolumeWorldToObject, float4(worldPos, 1.0)).xyz : worldPos;\n    float3 texCoord = (position - unity_ProbeVolumeMin.xyz) * unity_ProbeVolumeSizeInv.xyz;\n    texCoord.x = texCoord.x * 0.25f;\n\n    // We need to compute proper X coordinate to sample.\n    // Clamp the coordinate otherwize we'll have leaking between RGB coefficients\n    float texCoordX = clamp(texCoord.x, 0.5f * texelSizeX, 0.25f - 0.5f * texelSizeX);\n\n    // sampler state comes from SHr (all SH textures share the same sampler)\n    texCoord.x = texCoordX;\n    half4 SHAr = UNITY_SAMPLE_TEX3D_SAMPLER(unity_ProbeVolumeSH, unity_ProbeVolumeSH, texCoord);\n\n    texCoord.x = texCoordX + 0.25f;\n    half4 SHAg = UNITY_SAMPLE_TEX3D_SAMPLER(unity_ProbeVolumeSH, unity_ProbeVolumeSH, texCoord);\n\n    texCoord.x = texCoordX + 0.5f;\n    half4 SHAb = UNITY_SAMPLE_TEX3D_SAMPLER(unity_ProbeVolumeSH, unity_ProbeVolumeSH, texCoord);\n\n    // Linear + constant polynomial terms\n    half3 x1;\n    x1.r = dot(SHAr, normal);\n    x1.g = dot(SHAg, normal);\n    x1.b = dot(SHAb, normal);\n\n    return x1;\n}"
+        },
+        {
+          "comment": "// normal should be normalized, w=1.0",
+          "lineNum": 427,
+          "modifiers": "",
+          "parameters": "half4 normal",
+          "type": "half3",
+          "name": "ShadeSH12Order",
+          "code": "half3 ShadeSH12Order (half4 normal)\n{\n    // Linear + constant polynomial terms\n    half3 res = SHEvalLinearL0L1 (normal);\n\n#   ifdef UNITY_COLORSPACE_GAMMA\n        res = LinearToGammaSpace (res);\n#   endif\n\n    return res;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 453,
+          "modifiers": "inline",
+          "parameters": "v2f_vertex_lit i, sampler2D mainTex",
+          "type": "fixed4",
+          "name": "VertexLight",
+          "code": "inline fixed4 VertexLight( v2f_vertex_lit i, sampler2D mainTex )\n{\n    fixed4 texcol = tex2D( mainTex, i.uv );\n    fixed4 c;\n    c.xyz = ( texcol.xyz * i.diff.xyz + i.spec.xyz * texcol.a );\n    c.w = texcol.w * i.diff.w;\n    return c;\n}"
+        },
+        {
+          "comment": "// Calculates UV offset for parallax bump mapping",
+          "lineNum": 464,
+          "modifiers": "inline",
+          "parameters": "half h, half height, half3 viewDir",
+          "type": "float2",
+          "name": "ParallaxOffset",
+          "code": "inline float2 ParallaxOffset( half h, half height, half3 viewDir )\n{\n    h = h * height - height/2.0;\n    float3 v = normalize(viewDir);\n    v.z += 0.42;\n    return h * (v.xy / v.z);\n}"
+        },
+        {
+          "comment": "// Converts color to luminance (grayscale)",
+          "lineNum": 473,
+          "modifiers": "inline",
+          "parameters": "half3 rgb",
+          "type": "half",
+          "name": "Luminance",
+          "code": "inline half Luminance(half3 rgb)\n{\n    return dot(rgb, unity_ColorSpaceLuminance.rgb);\n}"
+        },
+        {
+          "comment": "// Convert rgb to luminance\n// with rgb in linear space with sRGB primaries and D65 white point",
+          "lineNum": 480,
+          "modifiers": "",
+          "parameters": "half3 linearRgb",
+          "type": "half",
+          "name": "LinearRgbToLuminance",
+          "code": "half LinearRgbToLuminance(half3 linearRgb)\n{\n    return dot(linearRgb, half3(0.2126729f,  0.7151522f, 0.0721750f));\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 485,
+          "modifiers": "",
+          "parameters": "half3 color, float maxRGBM",
+          "type": "half4",
+          "name": "UnityEncodeRGBM",
+          "code": "half4 UnityEncodeRGBM (half3 color, float maxRGBM)\n{\n    float kOneOverRGBMMaxRange = 1.0 / maxRGBM;\n    const float kMinMultiplier = 2.0 * 1e-2;\n\n    float3 rgb = color * kOneOverRGBMMaxRange;\n    float alpha = max(max(rgb.r, rgb.g), max(rgb.b, kMinMultiplier));\n    alpha = ceil(alpha * 255.0) / 255.0;\n\n    // Division-by-zero warning from d3d9, so make compiler happy.\n    alpha = max(alpha, kMinMultiplier);\n\n    return half4(rgb / alpha, alpha);\n}"
+        },
+        {
+          "comment": "// Decodes HDR textures\n// handles dLDR, RGBM formats",
+          "lineNum": 502,
+          "modifiers": "inline",
+          "parameters": "half4 data, half4 decodeInstructions",
+          "type": "half3",
+          "name": "DecodeHDR",
+          "code": "inline half3 DecodeHDR (half4 data, half4 decodeInstructions)\n{\n    // Take into account texture alpha if decodeInstructions.w is true(the alpha value affects the RGB channels)\n    half alpha = decodeInstructions.w * (data.a - 1.0) + 1.0;\n\n    // If Linear mode is not supported we can skip exponent part\n    #if defined(UNITY_COLORSPACE_GAMMA)\n        return (decodeInstructions.x * alpha) * data.rgb;\n    #else\n    #   if defined(UNITY_USE_NATIVE_HDR)\n            return decodeInstructions.x * data.rgb; // Multiplier for future HDRI relative to absolute conversion.\n    #   else\n            return (decodeInstructions.x * pow(alpha, decodeInstructions.y)) * data.rgb;\n    #   endif\n    #endif\n}"
+        },
+        {
+          "comment": "// Decodes HDR textures\n// handles dLDR, RGBM formats",
+          "lineNum": 521,
+          "modifiers": "inline",
+          "parameters": "half4 data, half4 decodeInstructions",
+          "type": "half3",
+          "name": "DecodeLightmapRGBM",
+          "code": "inline half3 DecodeLightmapRGBM (half4 data, half4 decodeInstructions)\n{\n    // If Linear mode is not supported we can skip exponent part\n    #if defined(UNITY_COLORSPACE_GAMMA)\n    # if defined(UNITY_FORCE_LINEAR_READ_FOR_RGBM)\n        return (decodeInstructions.x * data.a) * sqrt(data.rgb);\n    # else\n        return (decodeInstructions.x * data.a) * data.rgb;\n    # endif\n    #else\n        return (decodeInstructions.x * pow(data.a, decodeInstructions.y)) * data.rgb;\n    #endif\n}"
+        },
+        {
+          "comment": "// Decodes doubleLDR encoded lightmaps.",
+          "lineNum": 536,
+          "modifiers": "inline",
+          "parameters": "fixed4 color, half4 decodeInstructions",
+          "type": "half3",
+          "name": "DecodeLightmapDoubleLDR",
+          "code": "inline half3 DecodeLightmapDoubleLDR( fixed4 color, half4 decodeInstructions)\n{\n    // decodeInstructions.x contains 2.0 when gamma color space is used or pow(2.0, 2.2) = 4.59 when linear color space is used on mobile platforms\n    return decodeInstructions.x * color.rgb;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 542,
+          "modifiers": "inline",
+          "parameters": "fixed4 color, half4 decodeInstructions",
+          "type": "half3",
+          "name": "DecodeLightmap",
+          "code": "inline half3 DecodeLightmap( fixed4 color, half4 decodeInstructions)\n{\n#if defined(UNITY_LIGHTMAP_DLDR_ENCODING)\n    return DecodeLightmapDoubleLDR(color, decodeInstructions);\n#elif defined(UNITY_LIGHTMAP_RGBM_ENCODING)\n    return DecodeLightmapRGBM(color, decodeInstructions);\n#else //defined(UNITY_LIGHTMAP_FULL_HDR)\n    return color.rgb;\n#endif\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 555,
+          "modifiers": "inline",
+          "parameters": "fixed4 color",
+          "type": "half3",
+          "name": "DecodeLightmap",
+          "code": "inline half3 DecodeLightmap( fixed4 color )\n{\n    return DecodeLightmap( color, unity_Lightmap_HDR );\n}"
+        },
+        {
+          "comment": "// Decodes Enlighten RGBM encoded lightmaps\n// NOTE: Enlighten dynamic texture RGBM format is _different_ from standard Unity HDR textures\n// (such as Baked Lightmaps, Reflection Probes and IBL images)\n// Instead Enlighten provides RGBM texture in _Linear_ color space with _different_ exponent.\n// WARNING: 3 pow operations, might be very expensive for mobiles!",
+          "lineNum": 567,
+          "modifiers": "inline",
+          "parameters": "fixed4 color",
+          "type": "half3",
+          "name": "DecodeRealtimeLightmap",
+          "code": "inline half3 DecodeRealtimeLightmap( fixed4 color )\n{\n    //@TODO: Temporary until Geomerics gives us an API to convert lightmaps to RGBM in gamma space on the enlighten thread before we upload the textures.\n#if defined(UNITY_FORCE_LINEAR_READ_FOR_RGBM)\n    return pow ((unity_DynamicLightmap_HDR.x * color.a) * sqrt(color.rgb), unity_DynamicLightmap_HDR.y);\n#else\n    return pow ((unity_DynamicLightmap_HDR.x * color.a) * color.rgb, unity_DynamicLightmap_HDR.y);\n#endif\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 577,
+          "modifiers": "inline",
+          "parameters": "half3 color, fixed4 dirTex, half3 normalWorld",
+          "type": "half3",
+          "name": "DecodeDirectionalLightmap",
+          "code": "inline half3 DecodeDirectionalLightmap (half3 color, fixed4 dirTex, half3 normalWorld)\n{\n    // In directional (non-specular) mode Enlighten bakes dominant light direction\n    // in a way, that using it for half Lambert and then dividing by a \"rebalancing coefficient\"\n    // gives a result close to plain diffuse response lightmaps, but normalmapped.\n\n    // Note that dir is not unit length on purpose. Its length is \"directionality\", like\n    // for the directional specular lightmaps.\n\n    half halfLambert = dot(normalWorld, dirTex.xyz - 0.5) + 0.5;\n\n    return color * halfLambert / max(1e-4h, dirTex.w);\n}"
+        },
+        {
+          "comment": "// Encoding/decoding [0..1) floats into 8 bit/channel RGBA. Note that 1.0 will not be encoded properly.",
+          "lineNum": 592,
+          "modifiers": "inline",
+          "parameters": "float v",
+          "type": "float4",
+          "name": "EncodeFloatRGBA",
+          "code": "inline float4 EncodeFloatRGBA( float v )\n{\n    float4 kEncodeMul = float4(1.0, 255.0, 65025.0, 16581375.0);\n    float kEncodeBit = 1.0/255.0;\n    float4 enc = kEncodeMul * v;\n    enc = frac (enc);\n    enc -= enc.yzww * kEncodeBit;\n    return enc;\n}"
+        },
+        {
+          "comment": "// Encoding/decoding [0..1) floats into 8 bit/channel RGBA. Note that 1.0 will not be encoded properly.",
+          "lineNum": 601,
+          "modifiers": "inline",
+          "parameters": "float4 enc",
+          "type": "float",
+          "name": "DecodeFloatRGBA",
+          "code": "inline float DecodeFloatRGBA( float4 enc )\n{\n    float4 kDecodeDot = float4(1.0, 1/255.0, 1/65025.0, 1/16581375.0);\n    return dot( enc, kDecodeDot );\n}"
+        },
+        {
+          "comment": "// Encoding/decoding [0..1) floats into 8 bit/channel RG. Note that 1.0 will not be encoded properly.",
+          "lineNum": 608,
+          "modifiers": "inline",
+          "parameters": "float v",
+          "type": "float2",
+          "name": "EncodeFloatRG",
+          "code": "inline float2 EncodeFloatRG( float v )\n{\n    float2 kEncodeMul = float2(1.0, 255.0);\n    float kEncodeBit = 1.0/255.0;\n    float2 enc = kEncodeMul * v;\n    enc = frac (enc);\n    enc.x -= enc.y * kEncodeBit;\n    return enc;\n}"
+        },
+        {
+          "comment": "// Encoding/decoding [0..1) floats into 8 bit/channel RG. Note that 1.0 will not be encoded properly.",
+          "lineNum": 617,
+          "modifiers": "inline",
+          "parameters": "float2 enc",
+          "type": "float",
+          "name": "DecodeFloatRG",
+          "code": "inline float DecodeFloatRG( float2 enc )\n{\n    float2 kDecodeDot = float2(1.0, 1/255.0);\n    return dot( enc, kDecodeDot );\n}"
+        },
+        {
+          "comment": "// Encoding/decoding view space normals into 2D 0..1 vector",
+          "lineNum": 625,
+          "modifiers": "inline",
+          "parameters": "float3 n",
+          "type": "float2",
+          "name": "EncodeViewNormalStereo",
+          "code": "inline float2 EncodeViewNormalStereo( float3 n )\n{\n    float kScale = 1.7777;\n    float2 enc;\n    enc = n.xy / (n.z+1);\n    enc /= kScale;\n    enc = enc*0.5+0.5;\n    return enc;\n}"
+        },
+        {
+          "comment": "// Encoding/decoding view space normals into 2D 0..1 vector",
+          "lineNum": 634,
+          "modifiers": "inline",
+          "parameters": "float4 enc4",
+          "type": "float3",
+          "name": "DecodeViewNormalStereo",
+          "code": "inline float3 DecodeViewNormalStereo( float4 enc4 )\n{\n    float kScale = 1.7777;\n    float3 nn = enc4.xyz*float3(2*kScale,2*kScale,0) + float3(-kScale,-kScale,1);\n    float g = 2.0 / dot(nn.xyz,nn.xyz);\n    float3 n;\n    n.xy = g*nn.xy;\n    n.z = g-1;\n    return n;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 645,
+          "modifiers": "inline",
+          "parameters": "float depth, float3 normal",
+          "type": "float4",
+          "name": "EncodeDepthNormal",
+          "code": "inline float4 EncodeDepthNormal( float depth, float3 normal )\n{\n    float4 enc;\n    enc.xy = EncodeViewNormalStereo (normal);\n    enc.zw = EncodeFloatRG (depth);\n    return enc;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 653,
+          "modifiers": "inline",
+          "parameters": "float4 enc, out float depth, out float3 normal",
+          "type": "void",
+          "name": "DecodeDepthNormal",
+          "code": "inline void DecodeDepthNormal( float4 enc, out float depth, out float3 normal )\n{\n    depth = DecodeFloatRG (enc.zw);\n    normal = DecodeViewNormalStereo (enc);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 659,
+          "modifiers": "inline",
+          "parameters": "fixed4 packednormal",
+          "type": "fixed3",
+          "name": "UnpackNormalDXT5nm",
+          "code": "inline fixed3 UnpackNormalDXT5nm (fixed4 packednormal)\n{\n    fixed3 normal;\n    normal.xy = packednormal.wy * 2 - 1;\n    normal.z = sqrt(1 - saturate(dot(normal.xy, normal.xy)));\n    return normal;\n}"
+        },
+        {
+          "comment": "// Unpack normal as DXT5nm (1, y, 1, x) or BC5 (x, y, 0, 1)\n// Note neutral texture like \"bump\" is (0, 0, 1, 1) to work with both plain RGB normal and DXT5nm/BC5",
+          "lineNum": 669,
+          "modifiers": "",
+          "parameters": "fixed4 packednormal",
+          "type": "fixed3",
+          "name": "UnpackNormalmapRGorAG",
+          "code": "fixed3 UnpackNormalmapRGorAG(fixed4 packednormal)\n{\n    // This do the trick\n   packednormal.x *= packednormal.w;\n\n    fixed3 normal;\n    normal.xy = packednormal.xy * 2 - 1;\n    normal.z = sqrt(1 - saturate(dot(normal.xy, normal.xy)));\n    return normal;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 679,
+          "modifiers": "inline",
+          "parameters": "fixed4 packednormal",
+          "type": "fixed3",
+          "name": "UnpackNormal",
+          "code": "inline fixed3 UnpackNormal(fixed4 packednormal)\n{\n#if defined(UNITY_NO_DXT5nm)\n    return packednormal.xyz * 2 - 1;\n#else\n    return UnpackNormalmapRGorAG(packednormal);\n#endif\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 688,
+          "modifiers": "",
+          "parameters": "fixed4 packednormal, float scale",
+          "type": "fixed3",
+          "name": "UnpackNormalWithScale",
+          "code": "fixed3 UnpackNormalWithScale(fixed4 packednormal, float scale)\n{\n#ifndef UNITY_NO_DXT5nm\n    // Unpack normal as DXT5nm (1, y, 1, x) or BC5 (x, y, 0, 1)\n    // Note neutral texture like \"bump\" is (0, 0, 1, 1) to work with both plain RGB normal and DXT5nm/BC5\n    packednormal.x *= packednormal.w;\n#endif\n    fixed3 normal;\n    normal.xy = (packednormal.xy * 2 - 1) * scale;\n    normal.z = sqrt(1 - saturate(dot(normal.xy, normal.xy)));\n    return normal;\n}"
+        },
+        {
+          "comment": "// Z buffer to linear 0..1 depth",
+          "lineNum": 702,
+          "modifiers": "inline",
+          "parameters": "float z",
+          "type": "float",
+          "name": "Linear01Depth",
+          "code": "inline float Linear01Depth( float z )\n{\n    return 1.0 / (_ZBufferParams.x * z + _ZBufferParams.y);\n}"
+        },
+        {
+          "comment": "// Z buffer to linear 0..1 depth\n// Z buffer to linear depth",
+          "lineNum": 707,
+          "modifiers": "inline",
+          "parameters": "float z",
+          "type": "float",
+          "name": "LinearEyeDepth",
+          "code": "inline float LinearEyeDepth( float z )\n{\n    return 1.0 / (_ZBufferParams.z * z + _ZBufferParams.w);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 713,
+          "modifiers": "inline",
+          "parameters": "float2 uv, float4 scaleAndOffset",
+          "type": "float2",
+          "name": "UnityStereoScreenSpaceUVAdjustInternal",
+          "code": "inline float2 UnityStereoScreenSpaceUVAdjustInternal(float2 uv, float4 scaleAndOffset)\n{\n    return uv.xy * scaleAndOffset.xy + scaleAndOffset.zw;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 718,
+          "modifiers": "inline",
+          "parameters": "float4 uv, float4 scaleAndOffset",
+          "type": "float4",
+          "name": "UnityStereoScreenSpaceUVAdjustInternal",
+          "code": "inline float4 UnityStereoScreenSpaceUVAdjustInternal(float4 uv, float4 scaleAndOffset)\n{\n    return float4(UnityStereoScreenSpaceUVAdjustInternal(uv.xy, scaleAndOffset), UnityStereoScreenSpaceUVAdjustInternal(uv.zw, scaleAndOffset));\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 726,
+          "modifiers": "",
+          "parameters": "float2 uv, float w",
+          "type": "float2",
+          "name": "TransformStereoScreenSpaceTex",
+          "code": "float2 TransformStereoScreenSpaceTex(float2 uv, float w)\n{\n    float4 scaleOffset = unity_StereoScaleOffset[unity_StereoEyeIndex];\n    return uv.xy * scaleOffset.xy + scaleOffset.zw * w;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 732,
+          "modifiers": "inline",
+          "parameters": "float2 uv",
+          "type": "float2",
+          "name": "UnityStereoTransformScreenSpaceTex",
+          "code": "inline float2 UnityStereoTransformScreenSpaceTex(float2 uv)\n{\n    return TransformStereoScreenSpaceTex(saturate(uv), 1.0);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 737,
+          "modifiers": "inline",
+          "parameters": "float4 uv",
+          "type": "float4",
+          "name": "UnityStereoTransformScreenSpaceTex",
+          "code": "inline float4 UnityStereoTransformScreenSpaceTex(float4 uv)\n{\n    return float4(UnityStereoTransformScreenSpaceTex(uv.xy), UnityStereoTransformScreenSpaceTex(uv.zw));\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 741,
+          "modifiers": "inline",
+          "parameters": "float2 uv, float4 scaleAndOffset",
+          "type": "float2",
+          "name": "UnityStereoClamp",
+          "code": "inline float2 UnityStereoClamp(float2 uv, float4 scaleAndOffset)\n{\n    return float2(clamp(uv.x, scaleAndOffset.z, scaleAndOffset.z + scaleAndOffset.x), uv.y);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 775,
+          "modifiers": "",
+          "parameters": "float4x4 mat, float2 inUV",
+          "type": "float2",
+          "name": "MultiplyUV",
+          "code": "float2 MultiplyUV (float4x4 mat, float2 inUV) {\n    float4 temp = float4 (inUV.x, inUV.y, 0, 0);\n    temp = mul (mat, temp);\n    return temp.xy;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 781,
+          "modifiers": "",
+          "parameters": "appdata_img v",
+          "type": "v2f_img",
+          "name": "vert_img",
+          "code": "v2f_img vert_img( appdata_img v )\n{\n    v2f_img o;\n    UNITY_INITIALIZE_OUTPUT(v2f_img, o);\n    UNITY_SETUP_INSTANCE_ID(v);\n    UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);\n\n    o.pos = UnityObjectToClipPos (v.vertex);\n    o.uv = v.texcoord;\n    return o;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 796,
+          "modifiers": "inline",
+          "parameters": "float4 pos",
+          "type": "float4",
+          "name": "ComputeNonStereoScreenPos",
+          "code": "inline float4 ComputeNonStereoScreenPos(float4 pos) {\n    float4 o = pos * 0.5f;\n    o.xy = float2(o.x, o.y*_ProjectionParams.x) + o.w;\n    o.zw = pos.zw;\n    return o;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 803,
+          "modifiers": "inline",
+          "parameters": "float4 pos",
+          "type": "float4",
+          "name": "ComputeScreenPos",
+          "code": "inline float4 ComputeScreenPos(float4 pos) {\n    float4 o = ComputeNonStereoScreenPos(pos);\n#if defined(UNITY_SINGLE_PASS_STEREO)\n    o.xy = TransformStereoScreenSpaceTex(o.xy, pos.w);\n#endif\n    return o;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 811,
+          "modifiers": "inline",
+          "parameters": "float4 pos",
+          "type": "float4",
+          "name": "ComputeGrabScreenPos",
+          "code": "inline float4 ComputeGrabScreenPos (float4 pos) {\n    #if UNITY_UV_STARTS_AT_TOP\n    float scale = -1.0;\n    #else\n    float scale = 1.0;\n    #endif\n    float4 o = pos * 0.5f;\n    o.xy = float2(o.x, o.y*scale) + o.w;\n#ifdef UNITY_SINGLE_PASS_STEREO\n    o.xy = TransformStereoScreenSpaceTex(o.xy, pos.w);\n#endif\n    o.zw = pos.zw;\n    return o;\n}"
+        },
+        {
+          "comment": "// snaps post-transformed position to screen pixels",
+          "lineNum": 827,
+          "modifiers": "inline",
+          "parameters": "float4 pos",
+          "type": "float4",
+          "name": "UnityPixelSnap",
+          "code": "inline float4 UnityPixelSnap (float4 pos)\n{\n    float2 hpc = _ScreenParams.xy * 0.5f;\n#if  SHADER_API_PSSL\n// sdk 4.5 splits round into v_floor_f32(x+0.5) ... sdk 5.0 uses v_rndne_f32, for compatabilty we use the 4.5 version\n    float2 temp = ((pos.xy / pos.w) * hpc) + float2(0.5f,0.5f);\n    float2 pixelPos = float2(__v_floor_f32(temp.x), __v_floor_f32(temp.y));\n#else\n    float2 pixelPos = round ((pos.xy / pos.w) * hpc);\n#endif\n    pos.xy = pixelPos / hpc * pos.w;\n    return pos;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 841,
+          "modifiers": "inline",
+          "parameters": "float2 v",
+          "type": "float2",
+          "name": "TransformViewToProjection",
+          "code": "inline float2 TransformViewToProjection (float2 v) {\n    return mul((float2x2)UNITY_MATRIX_P, v);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 845,
+          "modifiers": "inline",
+          "parameters": "float3 v",
+          "type": "float3",
+          "name": "TransformViewToProjection",
+          "code": "inline float3 TransformViewToProjection (float3 v) {\n    return mul((float3x3)UNITY_MATRIX_P, v);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 851,
+          "modifiers": "",
+          "parameters": "float z",
+          "type": "float4",
+          "name": "UnityEncodeCubeShadowDepth",
+          "code": "float4 UnityEncodeCubeShadowDepth (float z)\n{\n    #ifdef UNITY_USE_RGBA_FOR_POINT_SHADOWS\n    return EncodeFloatRGBA (min(z, 0.999));\n    #else\n    return z;\n    #endif\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 860,
+          "modifiers": "",
+          "parameters": "float4 vals",
+          "type": "float",
+          "name": "UnityDecodeCubeShadowDepth",
+          "code": "float UnityDecodeCubeShadowDepth (float4 vals)\n{\n    #ifdef UNITY_USE_RGBA_FOR_POINT_SHADOWS\n    return DecodeFloatRGBA (vals);\n    #else\n    return vals.r;\n    #endif\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 870,
+          "modifiers": "",
+          "parameters": "float4 vertex, float3 normal",
+          "type": "float4",
+          "name": "UnityClipSpaceShadowCasterPos",
+          "code": "float4 UnityClipSpaceShadowCasterPos(float4 vertex, float3 normal)\n{\n    float4 wPos = mul(unity_ObjectToWorld, vertex);\n\n    if (unity_LightShadowBias.z != 0.0)\n    {\n        float3 wNormal = UnityObjectToWorldNormal(normal);\n        float3 wLight = normalize(UnityWorldSpaceLightDir(wPos.xyz));\n\n        // apply normal offset bias (inset position along the normal)\n        // bias needs to be scaled by sine between normal and light direction\n        // (http://the-witness.net/news/2013/09/shadow-mapping-summary-part-1/)\n        //\n        // unity_LightShadowBias.z contains user-specified normal offset amount\n        // scaled by world space texel size.\n\n        float shadowCos = dot(wNormal, wLight);\n        float shadowSine = sqrt(1-shadowCos*shadowCos);\n        float normalBias = unity_LightShadowBias.z * shadowSine;\n\n        wPos.xyz -= wNormal * normalBias;\n    }\n\n    return mul(UNITY_MATRIX_VP, wPos);\n}"
+        },
+        {
+          "comment": "// Legacy, not used anymore; kept around to not break existing user shaders",
+          "lineNum": 896,
+          "modifiers": "",
+          "parameters": "float3 vertex, float3 normal",
+          "type": "float4",
+          "name": "UnityClipSpaceShadowCasterPos",
+          "code": "float4 UnityClipSpaceShadowCasterPos(float3 vertex, float3 normal)\n{\n    return UnityClipSpaceShadowCasterPos(float4(vertex, 1), normal);\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 902,
+          "modifiers": "",
+          "parameters": "float4 clipPos",
+          "type": "float4",
+          "name": "UnityApplyLinearShadowBias",
+          "code": "float4 UnityApplyLinearShadowBias(float4 clipPos)\n\n{\n    // For point lights that support depth cube map, the bias is applied in the fragment shader sampling the shadow map.\n    // This is because the legacy behaviour for point light shadow map cannot be implemented by offseting the vertex position\n    // in the vertex shader generating the shadow map.\n#if !(defined(SHADOWS_CUBE) && defined(SHADOWS_CUBE_IN_DEPTH_TEX))\n    #if defined(UNITY_REVERSED_Z)\n        // We use max/min instead of clamp to ensure proper handling of the rare case\n        // where both numerator and denominator are zero and the fraction becomes NaN.\n        clipPos.z += max(-1, min(unity_LightShadowBias.x / clipPos.w, 0));\n    #else\n        clipPos.z += saturate(unity_LightShadowBias.x/clipPos.w);\n    #endif\n#endif\n\n#if defined(UNITY_REVERSED_Z)\n    float clamped = min(clipPos.z, clipPos.w*UNITY_NEAR_CLIP_VALUE);\n#else\n    float clamped = max(clipPos.z, clipPos.w*UNITY_NEAR_CLIP_VALUE);\n#endif\n    clipPos.z = lerp(clipPos.z, clamped, unity_LightShadowBias.y);\n    return clipPos;\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 1105,
+          "modifiers": "",
+          "parameters": "float2 vpos",
+          "type": "void",
+          "name": "UnityApplyDitherCrossFade",
+          "code": "    void UnityApplyDitherCrossFade(float2 vpos)\n    {\n        vpos /= 4; // the dither mask texture is 4x4\n        float mask = tex2D(unity_DitherMask, vpos).a;\n        float sgn = unity_LODFade.x > 0 ? 1.0f : -1.0f;\n        clip(unity_LODFade.x - mask * sgn);\n    }"
+        },
+        {
+          "comment": "",
+          "lineNum": 1191,
+          "modifiers": "",
+          "parameters": "float height",
+          "type": "float4",
+          "name": "PackHeightmap",
+          "code": "float4 PackHeightmap(float height)\n{\n    #if (API_HAS_GUARANTEED_R16_SUPPORT)\n        return height;\n    #else\n        uint a = (uint)(65535.0f * height);\n        return float4((a >> 0) & 0xFF, (a >> 8) & 0xFF, 0, 0) / 255.0f;\n    #endif\n}"
+        },
+        {
+          "comment": "",
+          "lineNum": 1201,
+          "modifiers": "",
+          "parameters": "float4 height",
+          "type": "float",
+          "name": "UnpackHeightmap",
+          "code": "float UnpackHeightmap(float4 height)\n{\n    #if (API_HAS_GUARANTEED_R16_SUPPORT)\n        return height.r;\n    #else\n        return (height.r + height.g * 256.0f) / 257.0f; // (255.0f * height.r + 255.0f * 256.0f * height.g) / 65535.0f\n    #endif\n}"
+        }
+      ],
+      "structs": [
+        {
+          "comment": "",
+          "lineNum": 56,
+          "type": "struct",
+          "name": "appdata_base",
+          "modifiers": "",
+          "code": "struct appdata_base {\n    float4 vertex : POSITION;\n    float3 normal : NORMAL;\n    float4 texcoord : TEXCOORD0;\n    UNITY_VERTEX_INPUT_INSTANCE_ID\n};"
+        },
+        {
+          "comment": "",
+          "lineNum": 63,
+          "type": "struct",
+          "name": "appdata_tan",
+          "modifiers": "",
+          "code": "struct appdata_tan {\n    float4 vertex : POSITION;\n    float4 tangent : TANGENT;\n    float3 normal : NORMAL;\n    float4 texcoord : TEXCOORD0;\n    UNITY_VERTEX_INPUT_INSTANCE_ID\n};"
+        },
+        {
+          "comment": "",
+          "lineNum": 71,
+          "type": "struct",
+          "name": "appdata_full",
+          "modifiers": "",
+          "code": "struct appdata_full {\n    float4 vertex : POSITION;\n    float4 tangent : TANGENT;\n    float3 normal : NORMAL;\n    float4 texcoord : TEXCOORD0;\n    float4 texcoord1 : TEXCOORD1;\n    float4 texcoord2 : TEXCOORD2;\n    float4 texcoord3 : TEXCOORD3;\n    fixed4 color : COLOR;\n    UNITY_VERTEX_INPUT_INSTANCE_ID\n};"
+        },
+        {
+          "comment": "",
+          "lineNum": 447,
+          "type": "struct",
+          "name": "v2f_vertex_lit",
+          "modifiers": "",
+          "code": "struct v2f_vertex_lit {\n    float2 uv   : TEXCOORD0;\n    fixed4 diff : COLOR0;\n    fixed4 spec : COLOR1;\n};"
+        },
+        {
+          "comment": "",
+          "lineNum": 760,
+          "type": "struct",
+          "name": "appdata_img",
+          "modifiers": "",
+          "code": "struct appdata_img\n{\n    float4 vertex : POSITION;\n    half2 texcoord : TEXCOORD0;\n    UNITY_VERTEX_INPUT_INSTANCE_ID\n};"
+        },
+        {
+          "comment": "",
+          "lineNum": 767,
+          "type": "struct",
+          "name": "v2f_img",
+          "modifiers": "",
+          "code": "struct v2f_img\n{\n    float4 pos : SV_POSITION;\n    half2 uv : TEXCOORD0;\n    UNITY_VERTEX_INPUT_INSTANCE_ID\n    UNITY_VERTEX_OUTPUT_STEREO\n};"
+        }
+      ],
+      "variables": [
+        {
+          "comment": "",
+          "lineNum": 553,
+          "modifiers": "",
+          "type": "half4",
+          "name": "unity_Lightmap_HDR;",
+          "code": "half4 unity_Lightmap_HDR;"
+        },
+        {
+          "comment": "",
+          "lineNum": 560,
+          "modifiers": "",
+          "type": "half4",
+          "name": "unity_DynamicLightmap_HDR;",
+          "code": "half4 unity_DynamicLightmap_HDR;"
+        },
+        {
+          "comment": "",
+          "lineNum": 1104,
+          "modifiers": "",
+          "type": "sampler2D",
+          "name": "unity_DitherMask;",
+          "code": "sampler2D unity_DitherMask;"
+        }
+      ]
+    }
+  ]
+}

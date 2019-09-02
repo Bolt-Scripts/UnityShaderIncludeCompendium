@@ -1,0 +1,64 @@
+<!––
+---
+---
+––>
+
+<head>
+    <link rel="icon" href="imgs/portrait_64.png">
+    <title>USC - Unity Shader Compendium</title>
+
+    <link rel="stylesheet" href="css/main.css?{{site.time | date: '%s%N'}}">
+    <link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="/js/Utility/InitFB.js"></script>
+    <script src="/js/Utility/FbHitCounter.js"></script>
+    <script src="js/json/Output.json"></script>
+</head>
+
+<body>
+    <div class="bg">
+        <center>
+            <div class="main-stuff">
+                <div>
+                    <p>Search the Compendium</p>
+                    <input data-bind="textInput: searchPhrase, event:{keyup: CheckFilter}">
+                </div>
+                
+                <div class="results" data-bind="foreach: searchResults">
+                    <div data-bind="template:{name:'codeItem-template'}"></div>
+                </div>
+                
+            </div>
+        </center>
+    </div>
+
+    <div include-html="html/utility/footer.html"></div>
+
+
+
+    <!-- scripto stuff -->
+    <script type="text/html" id="codeItem-template">
+        <div class="code-item">
+
+            <pre><code class="language-clike" data-bind="text: code">
+            </code></pre>
+            
+            <div class="item-details" data-bind="foreach: propNames">
+                <div>
+                    <p class="propTitle" data-bind="text: $data"></p>
+                    <pre>: </pre>
+                    <p data-bind="css: GetClass($data), text: $parent.properties[$data]"></p>
+                </div>
+            </div>
+
+        </div>        
+    </script>
+    
+</body>
+
+<script src="js/Index.js?{{site.time | date: '%s%N'}}"></script>
+<script src="js/utility/Main.js?{{site.time | date: '%s%N'}}"></script>
