@@ -117,12 +117,17 @@ footer .right {
 
 .code-item .item-details {
   background: #f4f4f4;
+  padding-left: 10px;
+  padding-bottom: 1px;
 }
 
 .code-item .item-details > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  text-align: left;
+  margin: 0;
+}
+
+.code-item .item-details > p, .code-item .item-details pre {
+  display: inline;
 }
 
 .code-item .item-details .propTitle {
@@ -149,7 +154,7 @@ html {
 }
 
 body {
-  zoom: 1.75;
+  zoom: 1.5;
   position: relative;
   margin: 0;
 }
