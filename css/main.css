@@ -126,7 +126,7 @@ footer .right {
   margin: 0;
 }
 
-.code-item .item-details > p, .code-item .item-details pre {
+.code-item .item-details > div > p, .code-item .item-details > div pre {
   display: inline;
 }
 
