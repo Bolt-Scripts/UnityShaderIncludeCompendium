@@ -23,7 +23,7 @@ function Index() {
 
         clearTimeout(filterTimeout);
         let filter = searchPhrase;
-        setTimeout(() => UpdateItems(filter), 200);
+        setTimeout(() => UpdateItems(filter), 500);
     }
 
     UpdateItems = function(filter){
