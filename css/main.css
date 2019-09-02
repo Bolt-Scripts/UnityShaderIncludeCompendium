@@ -98,6 +98,16 @@ footer .right {
   width: 100%;
 }
 
+.main-stuff > p {
+  margin: 0;
+}
+
+.main-stuff .subtitle {
+  font-size: x-small;
+  margin-top: 3px;
+  margin-bottom: 6px;
+}
+
 .results {
   overflow-y: scroll;
 }
@@ -106,9 +116,15 @@ footer .right {
   margin-bottom: 15px;
 }
 
-.code-item {
-  -webkit-box-shadow: 0px 2px 4px 0px black;
-          box-shadow: 0px 2px 4px 0px black;
+.searchbar {
+  font-size: larger;
+}
+
+@media only screen and (min-aspect-ratio: 3 / 2) {
+  .code-item {
+    -webkit-box-shadow: 0px 2px 4px 0px black;
+            box-shadow: 0px 2px 4px 0px black;
+  }
 }
 
 .code-item > pre {

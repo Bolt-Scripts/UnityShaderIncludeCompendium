@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-    
+
     <script src="/UnityShaderCompendium/js/utility/InitFB.js"></script>
     <script src="/UnityShaderCompendium/js/utility/FbHitCounter.js"></script>
     <script src="/UnityShaderCompendium/js/json/Output.json"></script>
@@ -24,7 +24,8 @@
             <div class="main-stuff">
                 <div>
                     <p>Search the Compendium</p>
-                    <input data-bind="textInput: searchPhrase, event:{keyup: CheckFilter}">
+                    <p class="subtitle">Search the Compendium</p>
+                    <input class="searchbar" data-bind="textInput: searchPhrase, event:{keyup: CheckFilter}">
                 </div>
                 
                 <div class="results" data-bind="foreach: searchResults">

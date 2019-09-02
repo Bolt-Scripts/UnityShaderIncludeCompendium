@@ -78,6 +78,17 @@ footer{
     position: fixed;
     height: 100%;
     width: 100%;
+
+    >p{
+        margin: 0;
+    }
+
+    .subtitle{
+        font-size: x-small;
+
+        margin-top: 3px;
+        margin-bottom: 6px;
+    }
 }
 
 .results{
@@ -88,8 +99,16 @@ footer{
     }
 }
 
+.searchbar{
+    font-size: larger;
+}
+
 .code-item{
-    box-shadow: 0px 2px 4px 0px black;
+
+    @media only screen and (min-aspect-ratio: $aspect) {
+        box-shadow: 0px 2px 4px 0px black;
+    }
+    
 
     >pre{
         border-bottom: double black 3px;
