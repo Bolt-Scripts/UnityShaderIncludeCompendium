@@ -48,7 +48,7 @@ function Index() {
     allItems = [];
     FixItems = function(){
         for (var file of cgincData.files) {
-            console.log(file);
+            // console.log(file);
             for(var prop in file){
                 if (Object.prototype.hasOwnProperty.call(file, prop)) {
                     if(typeof(file[prop]) != "object"){
