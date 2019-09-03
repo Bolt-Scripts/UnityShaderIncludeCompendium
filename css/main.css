@@ -123,6 +123,7 @@ footer .right {
 .results {
   overflow-y: scroll;
   scrollbar-width: thin;
+  margin-bottom: 20px;
 }
 
 .results > div {
@@ -183,10 +184,12 @@ footer .right {
 
 .code-item .item-details .code-comment {
   color: #589055;
+  font-family: "Verdana";
 }
 
 .code-item .item-details .code-other {
   color: #ddd;
+  font-family: "Verdana";
 }
 
 html {

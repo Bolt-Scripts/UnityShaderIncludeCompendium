@@ -108,7 +108,8 @@ footer{
 .results{
     overflow-y: scroll;
     scrollbar-width: thin;
-
+    margin-bottom: 20px;
+    
     >div{
         margin-bottom: 20px;
     }
@@ -165,10 +166,12 @@ footer{
 
         .code-comment{
             color: #589055;
+            font-family: "Verdana";
         }
 
         .code-other{
             color: $propsCol;
+            font-family: "Verdana";
         }
     }
 }
