@@ -1,5 +1,7 @@
 $aspect: "3/2";
-$darkGrey: rgb(22, 22, 22);
+$darkGrey: #141414;
+$notQuiteWhite: #f4f4f4;
+$propsCol: #ddd;
 
 .top-nav-area{
     display: grid;
@@ -79,12 +81,12 @@ footer{
     height: 100%;
     width: 100%;
 
-    >p{
+    >div>p{
         margin: 0;
     }
 
     .subtitle{
-        font-size: xx-small;
+        font-size: x-small;
 
         margin-top: 3px;
         margin-bottom: 6px;
@@ -93,17 +95,24 @@ footer{
 
 .results{
     overflow-y: scroll;
+    scrollbar-width: thin;
 
     >div{
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 }
 
 .searchbar{
     font-size: larger;
+    padding: 5px;
+    border-radius: 3px;
+    border: outset rgb(223, 223, 223) 2px;
+    margin-bottom: 10px;
+    width: 50%;
 }
 
 .code-item{
+    background: $darkGrey;
 
     @media only screen and (min-aspect-ratio: $aspect) {
         box-shadow: 0px 2px 4px 0px black;
@@ -111,13 +120,14 @@ footer{
     
 
     >pre{
-        border-bottom: double black 3px;
+        border-bottom: double rgb(195, 195, 195) 3px;        
     }
 
     .item-details{
-        background: #f4f4f4;
+        background: $darkGrey;
         padding-left: 10px;
-        padding-bottom: 1px;
+        padding-bottom: 5px;
+        color: $notQuiteWhite;
 
         >div{
             text-align: left;
@@ -137,6 +147,10 @@ footer{
         .code-comment{
             color: #589055;
         }
+
+        .code-other{
+            color: $propsCol;
+        }
     }
 }
 
@@ -152,21 +166,22 @@ html{
 .bg{
     height: -webkit-fill-available;
 
-    background: #f4f4f4;
-    background: -moz-linear-gradient(top, #f4f4f4 0%, #efefef 57%, #c6c6c6 100%);
-    background: -webkit-linear-gradient(top, #f4f4f4 0%,#efefef 57%,#c6c6c6 100%);
-    background: linear-gradient(to bottom, #f4f4f4 0%,#efefef 57%,#c6c6c6 100%);
+    background: $notQuiteWhite;
+    background: -moz-linear-gradient(top, $notQuiteWhite 0%, #efefef 57%, #c6c6c6 100%);
+    background: -webkit-linear-gradient(top, $notQuiteWhite 0%,#efefef 57%,#c6c6c6 100%);
+    background: linear-gradient(to bottom, $notQuiteWhite 0%,#efefef 57%,#c6c6c6 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#c6c6c6',GradientType=0 );
 
     padding: 5px 5px 20px 5px;
 }
 
 body{
-    zoom: 1.5;
+    background: $notQuiteWhite;
+    // zoom: 1.5;
 
-    @media only screen and (min-aspect-ratio: $aspect) {
-        zoom: 1;
-    }
+    // @media only screen and (min-aspect-ratio: $aspect) {
+    //     zoom: 1;
+    // }
 
     position: relative;
     margin: 0;

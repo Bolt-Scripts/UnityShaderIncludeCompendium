@@ -2,20 +2,22 @@
 ---
 
 <head>
-    <link rel="icon" href="/UnityShaderCompendium/imgs/portrait_64.png">
+    <link rel="icon" href="imgs/portrait_64.png">
     <title>USC - Unity Shader Compendium</title>
 
-    <link rel="stylesheet" href="/UnityShaderCompendium/css/main.css?{{site.time | date: '%s%N'}}">
-    <link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"/>
+    <link rel="stylesheet" href="css/main.css?{{site.time | date: '%s%N'}}">
+    <link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-twilight.min.css"/>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 
-    <script src="/UnityShaderCompendium/js/utility/InitFB.js"></script>
-    <script src="/UnityShaderCompendium/js/utility/FbHitCounter.js"></script>
-    <script src="/UnityShaderCompendium/js/json/Output.json"></script>
+    <script src="js/utility/InitFB.js"></script>
+    <script src="js/utility/FbHitCounter.js"></script>
+    <script src="js/json/Output.json"></script>
 </head>
 
 <body>
@@ -46,13 +48,13 @@
     <script type="text/html" id="codeItem-template">
         <div class="code-item">
 
-            <pre><code class="language-clike" data-bind="text: code">
+            <pre><code class="language-glsl" data-bind="text: code">
             </code></pre>
             
             <div class="item-details" data-bind="foreach: propNames">
                 <div>
                     <p class="propTitle" data-bind="text: $data"></p>
-                    <pre>: </pre>
+                    <pre>:</pre>
                     <p data-bind="css: GetClass($data), text: $parent.properties[$data]"></p>
                 </div>
             </div>
@@ -62,5 +64,5 @@
     
 </body>
 
-<script src="/UnityShaderCompendium/js/Index.js?{{site.time | date: '%s%N'}}"></script>
-<script src="/UnityShaderCompendium/js/utility/Main.js?{{site.time | date: '%s%N'}}"></script>
+<script src="js/Index.js?{{site.time | date: '%s%N'}}"></script>
+<script src="js/utility/Main.js?{{site.time | date: '%s%N'}}"></script>

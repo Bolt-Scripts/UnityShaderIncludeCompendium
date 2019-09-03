@@ -54,7 +54,7 @@ footer {
 }
 
 footer > div {
-  background: #161616;
+  background: #141414;
   height: 75px;
   position: fixed;
   display: -ms-grid;
@@ -98,26 +98,36 @@ footer .right {
   width: 100%;
 }
 
-.main-stuff > p {
+.main-stuff > div > p {
   margin: 0;
 }
 
 .main-stuff .subtitle {
-  font-size: xx-small;
+  font-size: x-small;
   margin-top: 3px;
   margin-bottom: 6px;
 }
 
 .results {
   overflow-y: scroll;
+  scrollbar-width: thin;
 }
 
 .results > div {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .searchbar {
   font-size: larger;
+  padding: 5px;
+  border-radius: 3px;
+  border: outset #dfdfdf 2px;
+  margin-bottom: 10px;
+  width: 50%;
+}
+
+.code-item {
+  background: #141414;
 }
 
 @media only screen and (min-aspect-ratio: 3 / 2) {
@@ -128,13 +138,14 @@ footer .right {
 }
 
 .code-item > pre {
-  border-bottom: double black 3px;
+  border-bottom: double #c3c3c3 3px;
 }
 
 .code-item .item-details {
-  background: #f4f4f4;
+  background: #141414;
   padding-left: 10px;
-  padding-bottom: 1px;
+  padding-bottom: 5px;
+  color: #f4f4f4;
 }
 
 .code-item .item-details > div {
@@ -154,10 +165,14 @@ footer .right {
   color: #589055;
 }
 
+.code-item .item-details .code-other {
+  color: #ddd;
+}
+
 html {
   font-family: "Verdana";
   font-size: 16px;
-  color: #161616;
+  color: #141414;
 }
 
 .bg {
@@ -170,15 +185,9 @@ html {
 }
 
 body {
-  zoom: 1.5;
+  background: #f4f4f4;
   position: relative;
   margin: 0;
-}
-
-@media only screen and (min-aspect-ratio: 3 / 2) {
-  body {
-    zoom: 1;
-  }
 }
 
 .err404 {
