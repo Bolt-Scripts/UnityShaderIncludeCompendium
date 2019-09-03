@@ -169,6 +169,7 @@ footer .right {
 
 .code-item .item-details > div > p, .code-item .item-details > div pre {
   display: inline;
+  white-space: pre-line;
 }
 
 .code-item .item-details .propTitle {

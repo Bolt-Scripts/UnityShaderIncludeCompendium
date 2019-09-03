@@ -75,6 +75,8 @@ footer{
 }
 
 .main-stuff{
+    display: flex;
+    flex-direction: column;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -146,6 +148,7 @@ footer{
 
             >p, pre{
                 display: inline;
+                white-space: pre-line;
             }
         }
 
