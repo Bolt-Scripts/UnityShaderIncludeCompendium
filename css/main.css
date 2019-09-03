@@ -108,6 +108,11 @@ footer .right {
   margin-bottom: 6px;
 }
 
+.main-stuff .title {
+  font-size: 1.2em;
+  font-style: italic;
+}
+
 .info {
   float: left;
   font-family: "Verdana";

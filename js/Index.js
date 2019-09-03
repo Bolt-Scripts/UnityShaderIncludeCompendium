@@ -34,8 +34,8 @@ function Index() {
         let lowerFilter = filter.toLowerCase();
         let filteredItems = allItems.filter(x => x.searchBy.toLowerCase().includes(lowerFilter));
 
-        if (filteredItems.length > 20) {
-            filteredItems = filteredItems.slice(0, 20);
+        if (filteredItems.length > 25) {
+            filteredItems = filteredItems.slice(0, 25);
         }
 
         filteredItems.sort((a, b) => a.searchBy.length - b.searchBy.length);
