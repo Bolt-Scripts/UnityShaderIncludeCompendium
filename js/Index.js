@@ -23,7 +23,7 @@ function Index() {
 
         clearTimeout(filterTimeout);
         let filter = searchPhrase;
-        setTimeout(() => UpdateItems(filter), 500);
+        filterTimeout = setTimeout(() => UpdateItems(filter), 600);
     }
 
     UpdateItems = function (filter) {
@@ -34,8 +34,8 @@ function Index() {
         let lowerFilter = filter.toLowerCase();
         let filteredItems = allItems.filter(x => x.searchBy.toLowerCase().includes(lowerFilter));
 
-        if (filteredItems.length > 50) {
-            filteredItems = filteredItems.slice(0, 50);
+        if (filteredItems.length > 20) {
+            filteredItems = filteredItems.slice(0, 20);
         }
 
         filteredItems.sort((a, b) => a.searchBy.length - b.searchBy.length);

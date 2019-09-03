@@ -86,7 +86,7 @@ footer{
     }
 
     .subtitle{
-        font-size: x-small;
+        font-size: small;
 
         margin-top: 3px;
         margin-bottom: 6px;
@@ -128,6 +128,12 @@ footer{
         padding-left: 10px;
         padding-bottom: 5px;
         color: $notQuiteWhite;
+
+        font-size: 0.4em;
+
+        @media only screen and (min-aspect-ratio: $aspect) {
+            font-size: 0.9em;
+        }
 
         >div{
             text-align: left;
@@ -177,11 +183,11 @@ html{
 
 body{
     background: $notQuiteWhite;
-    // zoom: 1.5;
 
-    // @media only screen and (min-aspect-ratio: $aspect) {
-    //     zoom: 1;
-    // }
+    zoom: 1.5;
+    @media only screen and (min-aspect-ratio: $aspect) {
+        zoom: 1;
+    }
 
     position: relative;
     margin: 0;

@@ -103,7 +103,7 @@ footer .right {
 }
 
 .main-stuff .subtitle {
-  font-size: x-small;
+  font-size: small;
   margin-top: 3px;
   margin-bottom: 6px;
 }
@@ -146,6 +146,13 @@ footer .right {
   padding-left: 10px;
   padding-bottom: 5px;
   color: #f4f4f4;
+  font-size: 0.4em;
+}
+
+@media only screen and (min-aspect-ratio: 3 / 2) {
+  .code-item .item-details {
+    font-size: 0.9em;
+  }
 }
 
 .code-item .item-details > div {
@@ -186,8 +193,15 @@ html {
 
 body {
   background: #f4f4f4;
+  zoom: 1.5;
   position: relative;
   margin: 0;
+}
+
+@media only screen and (min-aspect-ratio: 3 / 2) {
+  body {
+    zoom: 1;
+  }
 }
 
 .err404 {
