@@ -75,8 +75,6 @@ footer{
 }
 
 .main-stuff{
-    display: flex;
-    flex-direction: column;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -91,6 +89,13 @@ footer{
         margin-top: 3px;
         margin-bottom: 6px;
     }
+}
+
+.info{
+    float: left;
+    font-family: "Verdana";
+    font-size: 11px;
+    color: $darkGrey;
 }
 
 .results{

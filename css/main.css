@@ -108,6 +108,13 @@ footer .right {
   margin-bottom: 6px;
 }
 
+.info {
+  float: left;
+  font-family: "Verdana";
+  font-size: 11px;
+  color: #141414;
+}
+
 .results {
   overflow-y: scroll;
   scrollbar-width: thin;
