@@ -183,13 +183,10 @@ html{
 
 
 .bg{
-    height: -webkit-fill-available;
+    // height: -webkit-fill-available;
 
     background: $notQuiteWhite;
-    background: -moz-linear-gradient(top, $notQuiteWhite 0%, #efefef 57%, #c6c6c6 100%);
-    background: -webkit-linear-gradient(top, $notQuiteWhite 0%,#efefef 57%,#c6c6c6 100%);
-    background: linear-gradient(to bottom, $notQuiteWhite 0%,#efefef 57%,#c6c6c6 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#c6c6c6',GradientType=0 );
+    
 
     padding: 5px 5px 20px 5px;
 }
